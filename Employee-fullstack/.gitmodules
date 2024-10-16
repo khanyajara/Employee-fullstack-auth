@@ -1,0 +1,3 @@
+[submodule "backend/backend-firebase-firestore"]
+	path = backend/backend-firebase-firestore
+	url = https://github.com/Kgaotlhaelwe/backend-firebase-firestore.git
