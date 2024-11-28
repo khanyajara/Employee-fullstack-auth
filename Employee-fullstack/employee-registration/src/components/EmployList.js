@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const EmployeeList = ( props) => {
   
  
-  //const navigate = useNavigate();
+ 
 
   const deleteEmp = ((id)=>{
     console.log(id);

@@ -18,7 +18,7 @@ function Form() {
     idNumber: '',
     role: '',
     image: '',
-    email: '' // Added email field
+    email: '' 
   });
   const [isEditing, setIsEditing] = useState(false);
   const [currentEmployeeId, setCurrentEmployeeId] = useState('');
@@ -29,7 +29,7 @@ function Form() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/getEmployees');
+      const response = await axios.get('https://backend-employee-fwnr.onrender.com/api/getEmployees');
       setEmployees(response.data.data);
       setLoading(false);
     } catch (error) {
@@ -72,7 +72,7 @@ function Form() {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/addEmployee', newEmployee);
+      const response = await axios.post('https://backend-employee-fwnr.onrender.com/api/addEmployee', newEmployee);
       setEmployees([...employees, { id: response.data.id, ...newEmployee }]);
       resetForm();
     } catch (error) {
@@ -97,7 +97,7 @@ function Form() {
 
   const deleteEmployee = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/deleteEmployee/${id}`);
+      await axios.delete(`https://backend-employee-fwnr.onrender.com/api/deleteEmployee/${id}`);
       setEmployees(employees.filter(employee => employee.id !== id));
       resetForm();
     } catch (error) {
@@ -116,7 +116,7 @@ function Form() {
 
   const updateEmployee = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/updateEmployee/${currentEmployeeId}`, newEmployee);
+      await axios.put(`https://backend-employee-fwnr.onrender.com/api/updateEmployee/${currentEmployeeId}`, newEmployee);
       setEmployees(employees.map(employee => (employee.id === currentEmployeeId ? newEmployee : employee)));
       resetForm();
       setShowForm(false);
@@ -170,64 +170,68 @@ function Form() {
           <h2>{isEditing ? 'Edit Employee' : 'Add Employee'}</h2>
           <div className='adding'>
             <div className='card2'>
-              <div className='form'>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  value={newEmployee.name}
-                  onChange={handleChange}
-                  name="name"
-                  className="input"
-                />
-                <input
-                  type="text"
-                  placeholder="Surname"
-                  value={newEmployee.surname}
-                  onChange={handleChange}
-                  name="surname"
-                  className="input"
-                />
-                <input
-                  type="number"
-                  placeholder="Age"
-                  value={newEmployee.age}
-                  onChange={handleChange}
-                  name="age"
-                  className="input"
-                />
-                <input
-                  type="text"
-                  placeholder="ID Number"
-                  value={newEmployee.idNumber}
-                  onChange={handleChange}
-                  name="idNumber"
-                  className="input"
-                />
-                <input
-                  type="text"
-                  placeholder="Role"
-                  value={newEmployee.role}
-                  onChange={handleChange}
-                  name="role"
-                  className="input"
-                />
-                <input
-                  type="text"
-                  placeholder="Image URL"
-                  value={newEmployee.image}
-                  onChange={handleChange}
-                  name="image"
-                  className="input"
-                  required
-                />
-                <input
-                  type="email" // Email input
-                  placeholder="Email"
-                  value={newEmployee.email}
-                  onChange={handleChange}
-                  name="email"
-                  className="input"
-                />
+              <div className='form2'>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    value={newEmployee.name}
+                    onChange={handleChange}
+                    name="name"
+                    className="input"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Surname"
+                    value={newEmployee.surname}
+                    onChange={handleChange}
+                    name="surname"
+                    className="input"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Age"
+                    value={newEmployee.age}
+                    onChange={handleChange}
+                    name="age"
+                    className="input"
+                  /> <input
+                    type="text"
+                    placeholder="ID Number"
+                    value={newEmployee.idNumber}
+                    onChange={handleChange}
+                    name="idNumber"
+                    className="input"
+                  />
+                </div>
+                <div>
+                 
+                  <input
+                    type="text"
+                    placeholder="Role"
+                    value={newEmployee.role}
+                    onChange={handleChange}
+                    name="role"
+                    className="input"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Image URL"
+                    value={newEmployee.image}
+                    onChange={handleChange}
+                    name="image"
+                    className="input"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={newEmployee.email}
+                    onChange={handleChange}
+                    name="email"
+                    className="input"
+                  />
+                </div>
               </div>
             </div>
             <div>
@@ -263,6 +267,7 @@ function Form() {
                       <div className="fakeimg">
                         <img src={employee.image} alt={employee.name} />
                       </div>
+                      <p>Role: {employee.role}</p>
                       <div className="card_content">
                         <button className="another-btn" onClick={() => setIsOpen(prev => ({ ...prev, [employee.id]: !prev[employee.id] }))}>
                           {employee.name}
@@ -274,6 +279,7 @@ function Form() {
                               <p>Gender: {employee.gender}</p>
                               <p>Phone: {employee.phone}</p>
                               <p>ID: {employee.id}</p>
+                              
                             </div>
                           </ul>
                         )}

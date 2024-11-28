@@ -3,7 +3,9 @@
 
 color: black;
 }
-
+body{
+  background-color: aliceblue;
+}
 
 
 
@@ -16,7 +18,11 @@ color: black;
      padding-left: 4px;
      align-items: center;
      margin-top: 90px;
-     background-color: rgb(255, 252, 252);
+     background-color:  aliceblue;
+     }
+
+     .title{
+      margin-top: -15px;
      }
 
 .App{
@@ -44,14 +50,14 @@ color: black;
     display: flex;
      justify-content: center;
      flex-direction: column;
-     height: 0px;
+     height: auto;
      align-items: center;
-     margin-top: 0px; 
+     margin-top: 25px; 
      padding-left: 45px; 
-     box-shadow: 8px 4px 8px 4px rgba(0, 0,0,0.2);
-    transition: 0.3s;
-   
-    width: 500px;
+     background-color: rgb(255, 255, 255);
+     border: 1px solid grey;
+    width: auto;
+    border-radius: 5px;
      justify-content: space-around;
      color: black;
      transition: 0.5s ease-in-out;
@@ -67,7 +73,7 @@ color: black;
      flex-direction: column;
      height: 0px;
      align-items: center;
-     margin-top: 0px; 
+     margin-top: 15px; 
      margin-bottom: 0px;
      
      width: 800px;
@@ -145,9 +151,7 @@ color: black;
     background-color: rgb(211, 71, 99);
     box-shadow: rgba(44, 43, 43, 0.664) 5px 5px,
     rgba(45, 45, 45, 0.3) 10px 10px,
-     rgba(60, 59, 59, 0.2) 15px 15px,
-      rgba(54, 53, 53, 0.1) 20px 20px,
-       rgba(240, 46, 170, 0.05) 25px 25px;
+    
 }
 
 .edit{
@@ -161,9 +165,7 @@ color: black;
     background-color: rgb(91, 170, 140);
     box-shadow: rgba(44, 43, 43, 0.664) 5px 5px,
      rgba(45, 45, 45, 0.3) 10px 10px,
-      rgba(60, 59, 59, 0.2) 15px 15px,
-       rgba(54, 53, 53, 0.1) 20px 20px,
-        rgba(240, 46, 170, 0.05) 25px 25px;
+      
 }
 
 .detail:hover {
@@ -202,13 +204,11 @@ color: black;
   
   
   .showL :hover{
-    background-color:rgb(221, 212, 212);
+    background-color:rgb(141, 238, 255);
     color: black;
     box-shadow: rgba(44, 43, 43, 0.664) 5px 5px,
     rgba(45, 45, 45, 0.3) 10px 10px,
-     rgba(60, 59, 59, 0.2) 15px 15px,
-      rgba(54, 53, 53, 0.1) 20px 20px,
-       rgba(240, 46, 170, 0.05) 25px 25px;
+    
   }
 
   button {
@@ -232,7 +232,7 @@ color: black;
     content: '';
     width: 0%;
     height: 2px;
-    background: #b88784;
+    background: #1e2fc9;
     display: block;
     transition: 0.5s;
   }
@@ -240,7 +240,7 @@ color: black;
   button:hover::after, button:hover::before {
     width: 100%;
   }
-.btn1{
+/* .btn1{
   background-color: #aca1a0;
     color: white;
     padding: 5px 20px;
@@ -265,7 +265,7 @@ color: black;
     opacity: 0.9;
     border-radius: 16px;
 
-  }
+  } */
   .column {
     float: left;
     width: 100%;
@@ -290,7 +290,7 @@ color: black;
     padding: 16px;
     width: 500px;
     justify-content: center;
-    margin-top: -145px;
+    margin-top: -130px;
     border-radius: 11px;
     display: flex;
     height: 45px;
@@ -342,6 +342,8 @@ color: black;
     padding: 8px;
     margin: 5px 0;
     box-sizing: border-box;
+    border: 2px solid lightgrey;
+    border-radius: 6px;
   }
   
   .edit {
@@ -365,10 +367,8 @@ color: black;
   }
 
   .adding{
-    height: 400px;
-    box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-    0 0  0 2px rgb(148, 145, 145),
-    0.3em 0.3em 1em rgba(53, 51, 51, 0.3);
+    height: auto;
+   
     border-radius: 0.33rem;
     
   }

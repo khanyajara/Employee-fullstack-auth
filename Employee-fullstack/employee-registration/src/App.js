@@ -1,19 +1,15 @@
-import {React , useState} from 'react';
-import { BrowserRouter as Router, Route, Routes,Link, useNavigate } from 'react-router-dom';
-import EmployeeForm from './components/employmentform';
-import SearchEmployee from './components/SearchEmployee';
-import EmployeeList from './components/EmployList';
-import { Navigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Login from './components/Login';
+import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword';
 import Form from './components/form';
 import '../src/App.css';
 
-
 const App = () => {
-  const { id } = useParams();
-  const navigate = useNavigate 
   const [formState, setFormState] = useState({ name: '', email: '', phone: '' });
-   const [employees, setEmployees] = useState([
+  const [employees, setEmployees] = useState([
     {
       id: '1',
       name: 'John Doe',
@@ -21,7 +17,6 @@ const App = () => {
       phone: '123-456-7890',
       gender: 'Male',
       age: '30',
-      
     },
     {
       id: '2',
@@ -30,7 +25,6 @@ const App = () => {
       phone: '123-456-7891',
       gender: 'Female',
       age: '28',
-      
     },
     {
       id: '3',
@@ -39,7 +33,6 @@ const App = () => {
       phone: '123-456-7892',
       gender: 'Female',
       age: '25',
-      
     },
     {
       id: '4',
@@ -48,86 +41,41 @@ const App = () => {
       phone: '123-456-7893',
       gender: 'Male',
       age: '15',
-     
     },
-    
   ]);
 
-  
-  const handleTabChange = (tab) => {
-    navigate(`/${tab}`); // Navigate to the specified tab
-  };
-
-
-
-
- 
-  
-  const [searchId, setSearchId] = useState('');
-  const [employee, setEmployee] = useState(null);
-
-  const handleSearch = () => {
- 
-  };
-  const updateEmployee = (updatedEmployee) => {
-    setEmployees(employees.map(employee =>
-      employee.id === updatedEmployee.id ? updatedEmployee : employee
-    ));
-  };
-
-  const  deleteEmployee  =  ((id)=>{
+  const deleteEmployee = (id) => {
     setEmployees(employees.filter(employee => employee.id !== id));
-  })
+  };
 
- const [filteredEmployees,setFilteredEmployees] = useState(employees);
-
-
-const handleupdate = (updatedEmployees) =>{
-
-  setFilteredEmployees (updatedEmployees)
-}
-
-const handleUpdate = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch(`/api/employees/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formState),
-    });
-    const data = await response.json();
-    setEmployee(data);
-  } catch (error) {
-    console.error('Error updating employee:', error);
-  }
-};
-
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+  
+  };
 
   return (
- 
-   <div className='container'>
-     <h1>Employee Registration form</h1>
-       <div className="container">
-   
-         <div className='form'>
-          
-         </div>
-         <div className='details '>
-           <Form employees={employees}  deleteEmployee={deleteEmployee} handleUpdate={handleUpdate}  />
-         </div>
-         
-
-       </div>
-
-       <div>
-        
-       </div>
-   </div>
- 
-    
+    <Router>
+      <div className='container'>
+        <h1 className='title'>Employee Registration Form</h1>
+        <br/>
+        <Routes>
+          <Route 
+            path="/home" 
+            element={
+              <Form 
+                employees={employees} 
+                deleteEmployee={deleteEmployee} 
+                handleUpdate={handleUpdate} 
+              />
+            } 
+          />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
